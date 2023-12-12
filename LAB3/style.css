@@ -2,7 +2,7 @@ html,
 body {
 	font: 14px arial;
 	color: #264e0b;
-	background-color: #000;
+	background-color: #3f0303;
 }
 
 .top {
@@ -40,6 +40,7 @@ body {
 	background-color: #b3202c;
 	border-radius: 8px 8px 8px 8px;
 	padding-top: 10px;
+	color: #fff;
 }
 
 .bottom {
