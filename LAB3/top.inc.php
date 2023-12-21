@@ -1,6 +1,7 @@
 <?php
 session_start();
 ?>
+<div class="top">Основной каталог</div>
 <table >
 	<tr>
 		<td colspan="2" class="top_left"> 

@@ -61,7 +61,7 @@
 			  <img src="third.jpg" alt="Феномен культуры Возрождения" width="12%" height="12%">
 			</a>
 			<a href="https://arzamas.academy/mag/353-reness">
-			  <img src="two.jpg" alt="Факты о Ренессансе" width="23%" height="23%">
+			  <img src="two.jpg" alt="Факты о Ренессансе" width="23%" height="22%">
 			</a>
 		</p>
 		<?php } else switch ($page) {

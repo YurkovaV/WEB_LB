@@ -1,12 +1,10 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (!empty($_POST['title']) && !empty($_POST['description'])) {
-        session_start();
+    if (!empty($_POST['title']) && !empty($_POST['type'])&& !empty($_POST['location'])&& !empty($_POST['rel_date'])&& !empty($_POST['description'])) {
         $_SESSION['Item']['title'] = clearData($_POST['title']);
 		$_SESSION['Item']['type'] = clearData($_POST['type']);
 		$_SESSION['Item']['location'] = clearData($_POST['location']);
 		$_SESSION['Item']['rel_date'] = clearData($_POST['rel_date']);
-		$_SESSION['Item']['release_date'] = clearData($_POST['release_date']);
 		$_SESSION['Item']['description'] = clearData($_POST['description']);
         if (!empty($_FILES['uploadfile']['name']))
 		{
@@ -36,27 +34,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
-<center><h3>Добавить экспонат или достопримечательность</h3></center>
+<h3>Добавить экспонат или достопримечательность</h3>
 <table align='center'>
     <tr>
         <td>
-               <form method='POST' action='index.php?page=add' enctype='multipart/form-data'>
+            <form method='POST' action='index.php?page=add' enctype='multipart/form-data'>
                 <p>Название: <input type='text' name='title'></p>
                 <p>Тип:&nbsp;&nbsp;&nbsp;&nbsp;<select size='10' multiple name='type'>
-	                    <option value='Архитектурный памятник'>Архитектурный памятник</option>
-	                    <option value='Природная достопримечательность'>Природная достопримечательность</option>
-	                    <option value='Архиологический объект'>Архиологический объект</option>
-	                    <option value='Религиозный объект'>Религиозный объект</option>
-                        <option value='Картина'>Картина</option>
-                        <option value='Скульптура'>Скульптура</option>
-                        <option value='Фотография'>Фотография</option>
-                        <option value='Объект прикладного искусства'>Объект прикладного искусства</option>
-                        <option value='Архиологическая находка'>Архиологическая находка</option>
-                        <option value='Научный экспонат'>Научный экспонат</option>
-	            </select></p>
+                    <option value='Архитектурный памятник'>Архитектурный памятник</option>
+                    <option value='Природная достопримечательность'>Природная достопримечательность</option>
+                    <option value='Архиологический объект'>Архиологический объект</option>
+                    <option value='Религиозный объект'>Религиозный объект</option>
+                    <option value='Картина'>Картина</option>
+                    <option value='Скульптура'>Скульптура</option>
+                    <option value='Фотография'>Фотография</option>
+                    <option value='Объект прикладного искусства'>Объект прикладного искусства</option>
+                    <option value='Археологическая находка'>Археологическая находка</option>
+                    <option value='Научный экспонат'>Научный экспонат</option>
+                </select></p>
                 <p>Местоположение:&nbsp;&nbsp;<input type='text' name='location'></p>
                 <p>Год:&nbsp;&nbsp;<input type='text' name='rel_date'></p>
-                <p>Изображение: <input type='file' name='uploadfile'></p>
+                Изображение: <input type='file' name='uploadfile'>
                 <p>Описание: <textarea name='description'></textarea></p>
                 <input type='submit' value='Добавить'>
             </form>

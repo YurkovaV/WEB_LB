@@ -4,9 +4,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
     $title = clearData($_GET['title']);
     $type = clearData($_GET['type']);
     $location = clearData($_GET['location']);
-    $year = clearData($_GET['year']);
-    $uploadlink = clearData($_GET['uploadlink']);
+    $rel_date = clearData($_GET['rel_date']);
     $description = clearData($_GET['description']);
+    $uploadlink = clearData($_GET['uploadlink']);
 }
 ?>
 <br>
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
     <tr>
         <th width="20%" bgcolor="#8080ff">Название</th>
         <td colspan="2" width="40%" style="padding:0px 0px 0px 5px;"><?= $title ?></td>
-        <td rowspan="6" width="100%"><img src="<?= $uploadlink ?>" ></td>
+        <td rowspan="10" width="100%"><img src="<?= $uploadlink ?>" ></td>
     </tr>
     <tr>
         <th width="15%" bgcolor="#8080ff">Тип</th>
@@ -28,11 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
     </tr>
     <tr>
         <th width="15%" bgcolor="#8080ff">Год</th>
-        <td colspan="2" style="padding:0px 0px 0px 5px;"><?= $year ?></td>
-    </tr>
-    <tr>
-        <th width="15%" bgcolor="#8080ff">Изображение</th>
-        <td colspan="2" style="padding:0px 0px 0px 5px;"><img src="<?= $uploadlink ?>" ></td>
+        <td colspan="2" style="padding:0px 0px 0px 5px;"><?= $rel_date ?></td>
     </tr>
     <tr>
         <th width="15%" bgcolor="#8080ff">Описание</th>
