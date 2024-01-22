@@ -29,10 +29,6 @@ CREATE TABLE `items` (
   `REL_DATE` varchar(50) DEFAULT NULL,
   `DESCRIPTION` varchar(50) DEFAULT NULL,
   `UPLOADLINK` varchar(50) DEFAULT NULL,
-  `birthday` date DEFAULT NULL,
-  `phone` varchar(30) DEFAULT NULL,
-  `name` varchar(100) NOT NULL,
-  `surname` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
