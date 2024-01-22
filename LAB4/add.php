@@ -1,55 +1,62 @@
 <?php
-$link = mysqli_connect("localhost:3305", "root", "222222", "museum");
+$link = mysqli_connect("localhost:3306", "root", "222222", "museum");
 ?>
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (!empty($_POST['TITLE']) && !empty($_POST['TYPE']) && !empty($_POST['LOCATION']) && !empty($_POST['REL_DATE']) && !empty($_POST['DESCRIPTION'])) {
-        $_SESSION['Item']['TITLE'] = clearData($_POST['TITLE']);
-        $_SESSION['Item']['TYPE'] = clearData($_POST['TYPE']);
-        $_SESSION['Item']['LOCATION'] = clearData($_POST['LOCATION']);
-        $_SESSION['Item']['REL_DATE'] = clearData($_POST['REL_DATE']);
-        $_SESSION['Item']['DESCRIPTION'] = clearData($_POST['DESCRIPTION']);
+    if (!empty($_POST['title']) && !empty($_POST['type']) && !empty($_POST['location']) && !empty($_POST['rel_date']) && !empty($_POST['description'])) {
+        $title = clearData($_POST['title']);
+        // Параметры подключения к MySQL
+        $host = 'localhost:3306';
+        $user = 'root';
+        $pass = '222222';
+        $dbName = 'museum';
+        $mysqli = new mysqli($host, $user, $pass, $dbName);
+        // Проверка подключения
+        if ($mysqli->connect_error) {
+            die("Ошибка подключения: " . $mysqli->connect_error);
+        }
+        $total_items_result = $mysqli->query("SELECT COUNT(*) FROM ITEMS WHERE TITLE='$title'");
+        $total_items = $total_items_result->fetch_row();
+        if ($total_items[0] < 1) {
+        $title = clearData($_POST['title']);
+        $type = clearData($_POST['type']);
+        $location = clearData($_POST['location']);
+        $rel_date = clearData($_POST['rel_date']);
+        $description = clearData($_POST['description']);
 
         if (!empty($_FILES['uploadfile']['name'])) {
             $tmp_path = 'tmp/';
             $file_path = 'Images/';
-            $result = imageCheck();
+            $result = imageCheck(); 
 
             if ($result == 1) {
-                $name = resize($_FILES['uploadfile']);
+                $name = resize($_FILES['uploadfile']); 
                 $uploadfile = $file_path . $name;
 
-                if (@copy($tmp_path . $name, $file_path . $_POST['TITLE'] . '.jpg')) {
-                    $uploadlink = "Images/" . $_POST['TITLE'] . '.jpg';
+                if (@copy($tmp_path . $name, $file_path . $title . '.jpg')) { 
+                    $uploadlink = "Images/" . $title . '.jpg'; 
                 }
 
                 unlink($tmp_path . $name);
-                $_SESSION['Item']['UPLOADLINK'] = $uploadlink;
             } else {
                 echo $result;
                 exit;
             }
-        }
+        }}
 
-        // Сохранение данных в базу данных
-        $sql = "INSERT INTO items (TITLE, TYPE, LOCATION, REL_DATE, DESCRIPTION, UPLOAD_LINK) VALUES ('" . $_SESSION['Item']['TITLE'] . "', '" . $_SESSION['Item']['TYPE'] . "', '" . $_SESSION['Item']['LOCATION'] . "', '" . $_SESSION['Item']['REL_DATE'] . "', '" . $_SESSION['Item']['DESCRIPTION'] . "', '" . $_SESSION['Item']['UPLOADLINK'] . "')";
-
-        // Выполнение SQL-запроса
-        if (mysqli_query($link, $sql)) {
-            echo "Данные успешно добавлены в базу данных.";
+        $query = "INSERT INTO ITEMS (TITLE,TYPE,LOCATION,REL_DATE,DESCRIPTION,UPLOADLINK) VALUES ('$title','$type','$location','$rel_date','$description','$uploadlink')";
+            if ($mysqli->query($query) === true) {
+                header("Location: index.php?page=catalog");
+            } else {
+                echo "Ошибка при выполнении запроса: " . $mysqli->error;
+            }
+            $mysqli->close();
         } else {
-            echo "Ошибка при выполнении запроса: " . mysqli_error($link);
+            echo 'Такой экспонат уже добавлен';
         }
-
-        // Закрытие соединения с базой данных
-        mysqli_close($link);
-
-        header("Location: index.php?page=catalog");
-        exit;
     } else {
-        echo 'Заполните форму полностью!';
-    }
+        echo 'Полностью заполните форму';
 }
 ?>
 
