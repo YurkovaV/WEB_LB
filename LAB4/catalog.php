@@ -14,16 +14,12 @@
     </tr>
 
     <?php
-    $host = 'localhost:3305';
+    $host = 'localhost:3306';
     $user = 'root';
     $pass = '222222';
     $dbName = 'museum';
 
     $mysqli = new mysqli($host, $user, $pass, $dbName);
-
-    if ($mysqli->connect_error) {
-        die('Ошибка подключения (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
-    }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
         if (isset($_POST['cbs']) && !empty($_POST['cbs'])) {
@@ -50,12 +46,13 @@
 
     while ($row = $result->fetch_assoc()) {
         echo "<tr>
-            <td><input type='checkbox' name='cbs[]' value='" . $row['TITLE'] . "'></td>
+            <td><input type='checkbox' name='cbs[]' value='" .  "'></td>
+            <td>" . $row['TITLE'] . "</td>
             <td>" . $row['TYPE'] . "</td>
             <td>" . $row['LOCATION'] . "</td>
             <td>" . $row['REL_DATE'] . "</td>
             <td>" . $row['DESCRIPTION'] . "</td>
-            <td><img src='" . $row['IMAGE_PATH'] . "'></td>
+            <td><img src='" . $row['UPLOADLINK'] . "'></td>
         </tr>";
     }
     ?>
