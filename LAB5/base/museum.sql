@@ -42,7 +42,7 @@ CREATE TABLE `items` (
 
 LOCK TABLES `items` WRITE;
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
-INSERT INTO `items` VALUES ('цывап','Архиологический объект','йцва','23','werfgfdwsdf','Images/цывап.jpg',NULL,NULL,'',''),('цува','Научный экспонат','ывавы','12','цыва','Images/цува.jpg',NULL,NULL,'','');
+INSERT INTO `items` VALUES ('цывап','Архиологический объект','Русский музей','2007','Фигука изображающая опоссума','Images/цывап.jpg',NULL,NULL,'',''),('цува','Научный экспонат','Музей отографии','1001','Фотография цветная','Images/цува.jpg',NULL,NULL,'','');
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,6 +58,10 @@ CREATE TABLE `users` (
   `LOGIN` varchar(50) DEFAULT NULL,
   `PASSWORD` varchar(50) DEFAULT NULL,
   `EMAIL` varchar(255) DEFAULT NULL,
+  `BIRTHDAY` date DEFAULT NULL,
+  `PHONE` varchar(20) DEFAULT NULL,
+  `NAME` varchar(100) DEFAULT NULL,
+  `SURNAME` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -68,7 +72,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'yurk','111','yurk@yandex.ru');
+INSERT INTO `users` VALUES (1,'yurk','111','yurk@yandex.ru',NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -81,4 +85,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-23  0:37:08
+-- Dump completed on 2024-01-23  1:33:07
