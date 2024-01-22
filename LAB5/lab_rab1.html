@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Лабораторная работа №1</title>
+</head>
+<body>
+	<h3>Табличная структура:</h3>
+	<table border="1" width="500" height="200" style="border-collapse:collapse;">
+		<tr height="50">
+			<td rowspan="2" ></td>
+			<td  style="background:red"></td>
+			<td colspan="3"></td>
+			<td  style="background:yellow" width="50"></td>
+		</tr>
+		<tr>
+			<td colspan="2" ></td>
+			<td rowspan="2"  style="background:blue" width="50"></td>
+			<td></td>
+			<td rowspan="2"></td>
+		</tr>
+		<tr>
+			<td colspan="2"  style="background:green"></td>
+			<td></td>
+			<td></td>
+		</tr>
+	<table>
+	<h3>Анкета, заполняемая абитуриентом:</h3>
+	<form action="POST">
+		<table border="1" cellpadding="5" cellspacing="0" width="40%">
+			<tr>
+				<td width="50%" align="right">ФИО: </td>
+				<td width="50%"> <input type="name" name="name" size="39" maxlength="60"></td>
+			</tr>
+			<tr>
+				<td width="50%" align="right">Документ удостоверяющий личность: </td>
+				<td width="50%"> <input type="document" name="document" size="39" maxlength="60"></td>
+			</tr>
+			<tr>
+				<td width="50%" align="right">ФИО родственника или законного представителя: </td>
+				<td width="50%"> <input type="zp" name="zp" size="39" maxlength="60"></td>
+			</tr>
+			<tr>
+				<td width="50%" align="right">Дата рождения: </td>
+				<td width="50%"> <input type="date" name="date"></td>
+			</tr>
+			<tr>
+				<td width="50%" align="right">Номер телефона: </td>
+				<td width="50%"> <input type="phone" name="phone" size="39" maxlength="60"></td>
+			</tr>
+			<tr>
+				<td width="50%" align="right">Эл. почта: </td>
+				<td width="50%"> <input type="email" name="email" size="39" maxlength="60"></td>
+			</tr>
+			<tr>
+				<td width="50%" align="right">Пол: </td>
+				<td width="50%" align="center">
+					<input type="radio" name="income" value="male">муж
+					<input type="radio" name="income" value="female">жен
+				</td>
+			</tr>
+			<tr>
+				<td width="50%" align="right">Документ об образовании: </td>
+				<td width="50%"> <input type="education" name="education" size="39" maxlength="60"></td>
+			</tr>
+		</table>
+		<br>
+		<textarea name="comments" cols="80" rows="10">
+Список индивидуальных достижений:
+</textarea>
+		<br />
+		<input type="reset" value="Отправить" onclick="alert('Спасибо что оставили заявку!')">
+		<input type="reset" value="Сброс данных">
+	</form>
+<!-- <a href="index.php">Вернуться на главную страницу</a> -->
+</body>
+</html>
